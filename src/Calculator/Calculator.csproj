@@ -8,9 +8,10 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Calculator</RootNamespace>
     <AssemblyName>Calculator</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,14 +41,16 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArithmeticBinaryNode.cs" />
-    <Compile Include="ArithmeticOp.cs" />
-    <Compile Include="ArithmeticSyntaxParser.cs" />
+    <Compile Include="Exceptions\ArithmeticStatmentException.cs" />
+    <Compile Include="ArithmeticToken.cs" />
+    <Compile Include="ArithmeticTokenKind.cs" />
     <Compile Include="BinaryNode.cs" />
-    <Compile Include="InvalidArithmeticTokenException.cs" />
+    <Compile Include="Exceptions\InvalidArithmeticStatmentException.cs" />
+    <Compile Include="Exceptions\InvalidArithmeticTokenException.cs" />
     <Compile Include="ISyntaxParser.cs" />
+    <Compile Include="OperatorInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SyntaxNode.cs" />
+    <Compile Include="ShuntingYardSyntaxParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

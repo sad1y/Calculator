@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9EA53485-DDC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "src\Calculator\Calculator.csproj", "{B7C450B9-22BB-4E96-B5C7-4A5AFA9358E3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D94F7BF8-57FE-484B-8AB0-772EDD165715}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Tests", "test\Calculator.Tests\Calculator.Tests.csproj", "{DD694198-BEDC-4531-8693-F3348E99490F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{B7C450B9-22BB-4E96-B5C7-4A5AFA9358E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7C450B9-22BB-4E96-B5C7-4A5AFA9358E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7C450B9-22BB-4E96-B5C7-4A5AFA9358E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD694198-BEDC-4531-8693-F3348E99490F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD694198-BEDC-4531-8693-F3348E99490F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD694198-BEDC-4531-8693-F3348E99490F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD694198-BEDC-4531-8693-F3348E99490F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B7C450B9-22BB-4E96-B5C7-4A5AFA9358E3} = {9EA53485-DDCA-4BA3-9582-0F0D4104DAB1}
+		{DD694198-BEDC-4531-8693-F3348E99490F} = {D94F7BF8-57FE-484B-8AB0-772EDD165715}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C81579CA-B017-499B-9468-97DB64C48F4A}

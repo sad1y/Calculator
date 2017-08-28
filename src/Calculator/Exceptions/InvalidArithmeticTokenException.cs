@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Calculator
 {
     [Serializable]
-    public class InvalidArithmeticTokenException : Exception
+    public class InvalidArithmeticTokenException : ArithmeticException
     {
         public ArithmeticToken Token { get;  }
 
