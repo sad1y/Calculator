@@ -5,7 +5,7 @@ namespace Calculator
 {
     public partial class ArithmeticToken : IEquatable<ArithmeticToken>
     {
-        private static readonly ArithmeticToken NopeToken = new ArithmeticToken(ArithmeticTokenKind.Nope, string.Empty);
+        private static readonly ArithmeticToken NopeToken = new ArithmeticToken(ArithmeticTokenKind.Nope, " ");
         private static readonly ArithmeticToken EndToken = new ArithmeticToken(ArithmeticTokenKind.End, string.Empty);
         private static readonly ArithmeticToken LeftBracketToken = new ArithmeticToken(ArithmeticTokenKind.Priority, "(");
         private static readonly ArithmeticToken RightBracketToken = new ArithmeticToken(ArithmeticTokenKind.Priority, ")");
@@ -93,7 +93,7 @@ namespace Calculator
                 case '*': return MultiplicationToken; 
                 case '/': return DivisionToken; 
                 case '-': return SubstractionToken; 
-                case '+': return AdditionToken; 
+                case '+': return AdditionToken;
                 default:
                     {
                         throw new InvalidArithmeticstatementException($"operator {statement[position]} does not supported");

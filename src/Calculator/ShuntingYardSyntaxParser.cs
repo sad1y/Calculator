@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Calculator
 {
     // https://en.wikipedia.org/wiki/Shunting-yard_algorithm   
     internal class ShuntingYardSyntaxParser : IArithmeticSyntaxParser
     {
-        public BinaryNode<ArithmeticToken> Parse(string statement)
+        public Expression Parse(string statement)
         {
             if (string.IsNullOrEmpty(statement))
                 throw new ArgumentNullException(nameof(statement));
@@ -119,7 +120,7 @@ namespace Calculator
                 outputQueue.Enqueue(operatorStack.Pop());
             }
 
-            return BinaryNodeConverter.FromPostfixNotation(outputQueue);
+            return ExpressionConverter.FromPostfixNotation(outputQueue);
         }
     }
 }

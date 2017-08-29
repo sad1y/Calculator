@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq.Expressions;
 using Xunit;
 
 namespace Calculator.Tests
@@ -6,42 +7,32 @@ namespace Calculator.Tests
     public class ShuntingYardSyntaxParserTests
     {
         [Theory, MemberData(nameof(GetParseStatementData))]
-        void Parse(string statement, BinaryNode<ArithmeticToken> expected)
+        void Parse(string statement, Expression expected)
         {
             var parser = new ShuntingYardSyntaxParser();
 
             var result = parser.Parse(statement);
 
-            Assert.Equal(expected, result);
+            Assert.Equal(expected.ToString(), result.ToString());
         }
 
         public static IEnumerable<object> GetParseStatementData()
         {
-            yield return new object[] { "1+2*(3+1)+100",
-                new BinaryNode<ArithmeticToken>(OperatorToken("+"), 
-                    new BinaryNode<ArithmeticToken>(IntegerToken("1")),
-                    new BinaryNode<ArithmeticToken>(OperatorToken("+"),
-                        new BinaryNode<ArithmeticToken>(OperatorToken("*"),
-                            new BinaryNode<ArithmeticToken>(IntegerToken("2")),
-                            new BinaryNode<ArithmeticToken>(OperatorToken("+"),
-                                new BinaryNode<ArithmeticToken>(IntegerToken("3")),
-                                new BinaryNode<ArithmeticToken>(IntegerToken("1"))
-                            ))
-                        ,
-                        new BinaryNode<ArithmeticToken>(IntegerToken("100"))
+            yield return new object[] { "1+2 *(3+1) + 100",
+                Expression.Add(
+                    Expression.Constant(1),
+                    Expression.Add(
+                        Expression.Multiply(
+                            Expression.Constant(2),
+                            Expression.Add(
+                                Expression.Constant(3),
+                                Expression.Constant(1)
+                             )
+                         ),
+                        Expression.Constant(100)
                     )
                 )
             };
-        }
-
-        private static ArithmeticToken IntegerToken(string val)
-        {
-            return ArithmeticToken.Create(ArithmeticTokenKind.Integer, val);
-        }
-
-        private static ArithmeticToken OperatorToken(string val)
-        {
-            return ArithmeticToken.Create(ArithmeticTokenKind.Operator, val);
         }
     }
 }

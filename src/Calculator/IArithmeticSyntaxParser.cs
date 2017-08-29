@@ -1,7 +1,9 @@
-﻿namespace Calculator
+﻿using System.Linq.Expressions;
+
+namespace Calculator
 {
     internal interface IArithmeticSyntaxParser
     {
-        BinaryNode<ArithmeticToken> Parse(string statement);
+        Expression Parse(string statement);
     }
 }

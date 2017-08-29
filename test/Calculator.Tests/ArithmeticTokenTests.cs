@@ -17,7 +17,7 @@ namespace Calculator.Tests
         {
             yield return new object[] { "1+3", 0, ArithmeticToken.Create(ArithmeticTokenKind.Integer, "1") };
             yield return new object[] { string.Empty, 0, ArithmeticToken.Create(ArithmeticTokenKind.End, string.Empty) };
-            yield return new object[] { " ", 0, ArithmeticToken.Create(ArithmeticTokenKind.Nope, string.Empty) };
+            yield return new object[] { " ", 0, ArithmeticToken.Create(ArithmeticTokenKind.Nope, " ") };
         }
     }
 }
