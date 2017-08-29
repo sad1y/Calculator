@@ -41,13 +41,14 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryNodeConverter.cs" />
     <Compile Include="Exceptions\ArithmeticStatmentException.cs" />
     <Compile Include="ArithmeticToken.cs" />
     <Compile Include="ArithmeticTokenKind.cs" />
     <Compile Include="BinaryNode.cs" />
     <Compile Include="Exceptions\InvalidArithmeticStatmentException.cs" />
     <Compile Include="Exceptions\InvalidArithmeticTokenException.cs" />
-    <Compile Include="ISyntaxParser.cs" />
+    <Compile Include="IArithmeticSyntaxParser.cs" />
     <Compile Include="OperatorInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShuntingYardSyntaxParser.cs" />

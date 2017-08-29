@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArithmeticTokenTests.cs" />
+    <Compile Include="BinaryNodeConvertorTests.cs" />
     <Compile Include="ShuntingYardSyntaxParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

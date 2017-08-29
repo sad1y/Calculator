@@ -1,6 +1,6 @@
 ﻿namespace Calculator
 {
-    internal interface ISyntaxParser
+    internal interface IArithmeticSyntaxParser
     {
         BinaryNode<ArithmeticToken> Parse(string statement);
     }

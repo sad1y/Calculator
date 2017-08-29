@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Calculator
 {
     // https://en.wikipedia.org/wiki/Shunting-yard_algorithm   
-    internal class ShuntingYardSyntaxParser : ISyntaxParser
+    internal class ShuntingYardSyntaxParser : IArithmeticSyntaxParser
     {
         public BinaryNode<ArithmeticToken> Parse(string statement)
         {
@@ -17,15 +17,19 @@ namespace Calculator
 
             while (true)
             {
-                var currentToken = ArithmeticToken.Parse(statement, ref position);
+                var currentToken = ArithmeticToken.GetNextToken(statement, position); // position could be passed by ref, but for sake of single responsibility...
 
                 if (currentToken.Kind == ArithmeticTokenKind.NotSupported)
                 {
                     throw new InvalidArithmeticTokenException(currentToken);
                 }
 
-                if (currentToken.Kind == ArithmeticTokenKind.Nope) continue;
                 if (currentToken.Kind == ArithmeticTokenKind.End) break;
+
+                // while we have to copy position every time 
+                position += currentToken.Value.Length;
+
+                if (currentToken.Kind == ArithmeticTokenKind.Nope) continue;
 
                 if (currentToken.Kind == ArithmeticTokenKind.Double ||
                     currentToken.Kind == ArithmeticTokenKind.Integer)
@@ -93,22 +97,20 @@ namespace Calculator
 
                         outputQueue.Enqueue(op);
                     }
-
-                    continue;
                 }
-
             }
 
             // if there are no more tokens
-
             // while there are still operator tokens on the stack
-            var topOperator = operatorStack.Peek();
-
-            // if the operator token on the top of the stack is a bracket, then
-            // there are mismatched parentheses
-            if (topOperator != null && topOperator.Kind == ArithmeticTokenKind.Priority)
+            if (operatorStack.Count > 0)
             {
-                throw new InvalidArithmeticstatementException("parentheses mismatched");
+                var topOperator = operatorStack.Peek();
+
+                // if the operator token on the top of the stack is a bracket, then
+                if (topOperator != null && topOperator.Kind == ArithmeticTokenKind.Priority) {
+                    // there are mismatched parentheses
+                    throw new InvalidArithmeticstatementException("parentheses mismatched");
+                }
             }
 
             // pop the operator onto the output queue
@@ -117,7 +119,7 @@ namespace Calculator
                 outputQueue.Enqueue(operatorStack.Pop());
             }
 
-            return null;
+            return BinaryNodeConverter.FromPostfixNotation(outputQueue);
         }
     }
 }
