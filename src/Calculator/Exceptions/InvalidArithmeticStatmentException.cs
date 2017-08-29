@@ -3,9 +3,9 @@
 namespace Calculator
 {
     [Serializable]
-    public class InvalidArithmeticstatementException : ArithmeticstatementException
+    public class InvalidArithmeticStatementException : ArithmeticstatementException
     {
-        public InvalidArithmeticstatementException(string message) : base(message)
+        public InvalidArithmeticStatementException(string message) : base(message)
         {
         }
     }

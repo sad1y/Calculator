@@ -96,7 +96,7 @@ namespace Calculator
                 case '+': return AdditionToken;
                 default:
                     {
-                        throw new InvalidArithmeticstatementException($"operator {statement[position]} does not supported");
+                        throw new InvalidArithmeticStatementException($"operator {statement[position]} does not supported");
                     }
             }
         }

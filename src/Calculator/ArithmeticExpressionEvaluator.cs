@@ -16,6 +16,9 @@ namespace Calculator
 
         public double Eval(string statement)
         {
+            if (string.IsNullOrEmpty(statement))
+                throw new ArgumentNullException(nameof(statement));
+
             // evaluation of expression could be written by hand, 
             // but i prefer to reuse infrastructure that .net has
             var expression = _syntaxParser.Parse(statement);

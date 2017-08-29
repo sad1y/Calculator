@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using Xunit;
 
@@ -14,6 +15,14 @@ namespace Calculator.Tests
             var result = parser.Parse(statement);
 
             Assert.Equal(expected.ToString(), result.ToString());
+        }
+
+        [Theory, MemberData(nameof(GetParseInvalidStatementData))]
+        void ParseInvalidStatment(string statement, Type expectedExceptionType)
+        {
+            var parser = new ShuntingYardSyntaxParser();
+
+            Assert.Throws(expectedExceptionType, () => parser.Parse(statement));
         }
 
         public static IEnumerable<object> GetParseStatementData()
@@ -33,6 +42,12 @@ namespace Calculator.Tests
                     )
                 )
             };
+        }
+
+        public static IEnumerable<object> GetParseInvalidStatementData()
+        {
+            yield return new object[] { "(1+2", typeof(InvalidArithmeticStatementException) };
+            yield return new object[] { "1+2)", typeof(InvalidArithmeticStatementException) };
         }
     }
 }

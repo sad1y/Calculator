@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExpressionConverter.cs" />
-    <Compile Include="Calculator.cs" />
+    <Compile Include="ArithmeticExpressionEvaluator.cs" />
     <Compile Include="Exceptions\ArithmeticStatmentException.cs" />
     <Compile Include="ArithmeticToken.cs" />
     <Compile Include="ArithmeticTokenKind.cs" />

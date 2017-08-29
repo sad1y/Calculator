@@ -85,7 +85,7 @@ namespace Calculator
                         // mismatched parentheses
                         if (operatorStack.Count == 0)
                         {
-                            throw new InvalidArithmeticstatementException("parentheses mismatched");
+                            throw new InvalidArithmeticStatementException("parentheses mismatched");
                         }
 
                         // pop operator
@@ -101,23 +101,19 @@ namespace Calculator
                 }
             }
 
-            // if there are no more tokens
-            // while there are still operator tokens on the stack
-            if (operatorStack.Count > 0)
-            {
-                var topOperator = operatorStack.Peek();
-
-                // if the operator token on the top of the stack is a bracket, then
-                if (topOperator != null && topOperator.Kind == ArithmeticTokenKind.Priority) {
-                    // there are mismatched parentheses
-                    throw new InvalidArithmeticstatementException("parentheses mismatched");
-                }
-            }
-
             // pop the operator onto the output queue
             while (operatorStack.Count > 0)
             {
-                outputQueue.Enqueue(operatorStack.Pop());
+                var op = operatorStack.Pop();
+
+                // if the operator token on the top of the stack is a bracket, then
+                if (op.Kind == ArithmeticTokenKind.Priority)
+                {
+                    // there are mismatched parentheses
+                    throw new InvalidArithmeticStatementException("parentheses mismatched");
+                }
+
+                outputQueue.Enqueue(op);
             }
 
             return ExpressionConverter.FromPostfixNotation(outputQueue);

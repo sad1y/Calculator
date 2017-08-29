@@ -36,7 +36,7 @@ namespace ConsoleCalculator
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{ex.GetType().Name} {ex.Message}");
+                Console.WriteLine($"{ex.GetType().Name}: {ex.Message}");
             }
         }
     }
