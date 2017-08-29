@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Calculator\Calculator.csproj">
+    <ProjectReference Include="..\Calculator\Calculator.csproj">
       <Project>{B7C450B9-22BB-4E96-B5C7-4A5AFA9358E3}</Project>
       <Name>Calculator</Name>
     </ProjectReference>

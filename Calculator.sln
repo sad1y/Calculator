@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D94F7BF8-5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Tests", "test\Calculator.Tests\Calculator.Tests.csproj", "{DD694198-BEDC-4531-8693-F3348E99490F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCalculator", "Console.Calculator\ConsoleCalculator.csproj", "{63902B9E-EB2F-4823-966B-A833B9260DED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCalculator", "src\Console.Calculator\ConsoleCalculator.csproj", "{63902B9E-EB2F-4823-966B-A833B9260DED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
